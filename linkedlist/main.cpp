@@ -7,9 +7,19 @@
 //
 
 #include <iostream>
-
-int main(int argc, const char * argv[]) {
+#include"linkedlist.h"
+using namespace std;
+int main() {
+    LinkedList L;
+    int i;
+    for(i=3;i>0;i--)
+    {
+        L.addItem(20*i);
+    }
+    L.printlist();
+    L.deleteItem(20);
+    L.printlist();
     // insert code here...
-    std::cout << "Hello, World!\n";
+    
     return 0;
 }
