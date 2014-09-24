@@ -73,7 +73,71 @@ int LinkedList::deleteItem(int N)
 }
 void LinkedList::sortlist()
 {
-                
+    Node *temp=NULL;
+    Node *first=NULL;
+    Node *current=myHead;
+    Node *min=myHead;
+    Node *prev=NULL;
+    int flag=0;
+    int i=0;
+    for (i=0;i<size;i++)
+    {
+        while(current->next!=NULL)
+        {
+            if(min->data>current->next->data)
+            {
+                min=current->next;
+                prev=current;
+                flag=1;
+            }
+            current=current->next;
+        }
+    
+        if(flag==1)
+        {
+        if(first==NULL)
+        {
+            temp=min->next;
+            min->next=myHead->next;
+            myHead->next=temp;
+            prev->next=myHead;
+            myHead=min;
+            first=min;
+            min=myHead->next;
+            current=myHead->next;
+            prev=myHead;
+            flag=0;
+        }
+        else{
+            temp=min->next;
+            min->next=first->next->next;
+            prev->next=first->next;
+            first->next->next=temp;
+            first->next=min;
+            first=min;
+            current=first->next;
+            min=current;
+            prev=first;
+            flag=0;
+        }
+        }
+        else{
+            if(first==NULL)
+            {
+                current=myHead->next;
+                min=current;
+                prev=myHead;
+                first=myHead;
+            }
+            else{
+                current=first->next;
+                prev=first;
+                first=first->next;
+                min=first;
+            }
+        }
+    }
+        
     
 }
 void LinkedList::printlist()
